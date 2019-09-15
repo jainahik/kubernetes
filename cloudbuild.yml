@@ -21,7 +21,7 @@ steps:
   - image
   - deployment
   - test-image
-  - test-image=gcr.io/$PROJECT_ID/test-image:latest
+  - test-image=gcr.io/$PROJECT_ID/test-image:$COMMIT_SHA
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=test-cluster'
