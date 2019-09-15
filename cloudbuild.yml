@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/test-image:latest', 'gcr.io/$PROJECT_ID/test-image:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/test-image:$COMMIT_SHA', '.']
 
 # Tag the image
 - name: 'gcr.io/cloud-builders/docker'
