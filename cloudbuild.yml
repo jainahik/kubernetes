@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/test-image:latest', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/test-image:latest', '.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${PROJECT_ID}/test-image:latest']
+  args: ['push', 'gcr.io/$PROJECT_ID/test-image:latest']
   dir: 'testdir'
 
 # Tag the image
@@ -11,7 +11,7 @@ steps:
   args: ['tag', 'gcr.io/$PROJECT_ID/airflow:$COMMIT_SHA', 'gcr.io/$PROJECT_ID/airflow:latest']
 
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', 'deployment/myimage', 'frontend=gcr.io/${PROJECT_ID}/test-image:latest']
+  args: ['set', 'image', 'deployment/myimage', 'frontend=gcr.io/$PROJECT_ID/test-image:latest']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-south1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=test-cluster'
